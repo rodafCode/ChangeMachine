@@ -111,11 +111,14 @@ public class ChangeProcess {
 	{
 		String json=null;
 		try {
+			Map<String,String> responseMap = new HashMap<String,String>();
 			coinMaster.forEach((k,v) -> {
 				coinMaster.put(k,newCoinNumber);
+				responseMap.put(String.valueOf((double)k/100), String.valueOf(newCoinNumber));
+				
 			});
 			
-			json = new ObjectMapper().writeValueAsString(coinMaster);
+			json = new ObjectMapper().writeValueAsString(responseMap);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
